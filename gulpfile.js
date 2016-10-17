@@ -21,12 +21,14 @@ gulp.task('scripts', function() {
 gulp.task('compass', function() {
 	gulp.src('app/scss/style.scss')
 		.pipe(plumber())
+		/*
 		.pipe(compass({
 			config_file: './config.rb',
 			css: 'app/css',
 			sass: 'app/scss',
 			require: [ 'susy' ]
 		}))
+		/*	*/
 		.pipe(autoprefixer('last 2 versions'))
 		.pipe(gulp.dest('app/css'))
 		.pipe(reload({ stream: true }));
@@ -41,6 +43,7 @@ gulp.task('html', function() {
 // browser sync
 gulp.task('browser-sync', function() {
 	browserSync({
+		notify: false,
 		injectChanges: true,
 		server: {
 			baseDir: './app/'
